@@ -28,7 +28,7 @@ Create .env.local file
 $ .env.local
 ``` 
 
-# Environment Variables
+## Environment Variables
 
 ```bash
 DB_TYPE='mysql'
