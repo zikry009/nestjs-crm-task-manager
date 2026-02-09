@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dtos/CreateUserDto';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dtos/LoginDto';
 import { Role } from 'src/common/enums/roles.enum';
 
@@ -26,6 +26,7 @@ export class AuthController {
       },
     },
   })
+  @ApiSecurity([])
   async register(@Body() registerDto: CreateUserDto) {
     return this.authService.register(registerDto);
   }
@@ -43,6 +44,7 @@ export class AuthController {
       },
     },
   })
+  @ApiSecurity([])
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }

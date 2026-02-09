@@ -9,6 +9,17 @@ async function bootstrap() {
     .setTitle('Task CRM APIs')
     .setDescription('The Task CRM APIs')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        in: 'header',
+        name: 'Authorization',
+        description: 'Bearer Token',
+      },
+      'Authorization',
+    )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api-docs/v1', app, documentFactory);
