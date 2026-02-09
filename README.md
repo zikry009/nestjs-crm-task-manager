@@ -20,6 +20,37 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Enviroment File
+
+Create .env.local file
+```bash
+$ .env.local
+``` 
+
+#Environment Variables
+
+```bash
+$ DB_TYPE='mysql'
+$ DB_HOST='localhost'
+$ DB_PORT=XXXX
+$ DB_USERNAME='XXXX'
+$ DB_PASSWORD='XXXX'
+$ DB_NAME='XXXX'
+$ DB_SYNCHRONIZE=true
+$ DB_LOGGING=true
+$ DB_ENTITIES=/../entities/*.entity{.ts,.js}
+$ DB_MIGRATIONS=s/../migrations/*.ts
+$ DB_MIGRATIONS_RUN=true
+$ DB_AUTO_LOAD_ENTITIES=true
+$ DB_POOL_SIZE=5
+$ JWT_SECRET='XXXX'
+$ JWT_EXPIRATION_TIME='XXXX'
+``` 
+
+## Requirement to run
+
+  Node v20 or greater
+  MySQL Database
 
 ## Description
 
@@ -34,6 +65,9 @@ $ npm install
 ## Compile and run the project
 
 ```bash
+# local run 
+$ npm run start:local
+
 # development
 $ npm run start
 

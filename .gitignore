@@ -3,6 +3,7 @@
 /node_modules
 /build
 /.history
+package-lock.json
 
 # Logs
 logs
