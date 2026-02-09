@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from './dtos/CreateUserDto';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dtos/LoginDto';
+import { Role } from 'src/common/enums/roles.enum';
 
 @Controller('auth')
 @ApiTags('Auth Controller')
@@ -19,6 +20,7 @@ export class AuthController {
           name: 'John Doe',
           email: 'user@example.com',
           password: 'password123',
+          role: Role.USER,
         },
         summary: 'User registration data',
       },
