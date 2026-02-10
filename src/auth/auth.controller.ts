@@ -1,15 +1,17 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dtos/CreateUserDto';
-import { ApiBody, ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoginDto } from './dtos/LoginDto';
 import { Role } from 'src/common/enums/roles.enum';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @Controller('auth')
-@ApiTags('Auth Controller')
+@ApiTags('User Management (Auth Controller)')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public()
   @Post('register')
   @ApiOperation({ summary: 'Create new user' })
   @ApiBody({
@@ -26,11 +28,11 @@ export class AuthController {
       },
     },
   })
-  @ApiSecurity([])
   async register(@Body() registerDto: CreateUserDto) {
     return this.authService.register(registerDto);
   }
 
+  @Public()
   @Post('login')
   @ApiOperation({ summary: 'Login user' })
   @ApiBody({
@@ -44,7 +46,6 @@ export class AuthController {
       },
     },
   })
-  @ApiSecurity([])
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }

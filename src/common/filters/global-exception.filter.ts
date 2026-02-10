@@ -20,7 +20,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       message = exceptionRes?.message || exception.message;
     }
 
-    res.json({
+    res.status(status).json({
       success: false,
       message: message,
       data: null,

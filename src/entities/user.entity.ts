@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeInsert,
+  OneToMany,
 } from 'typeorm';
 import { Role } from '../common/enums/roles.enum';
 import * as bcrypt from 'bcrypt';
+import { Task } from './task.entity';
 
 @Entity('users')
 export class User {
@@ -35,6 +37,9 @@ export class User {
 
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToMany(() => Task, (task) => task.assignedTo)
+  tasks: Task[];
 
   @BeforeInsert()
   async hashPassword() {

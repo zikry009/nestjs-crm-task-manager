@@ -6,9 +6,13 @@ import dbConfig from './config/dbConfig';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { GlobalExceptionFilter } from './common/filters/global-exception.filter';
+import { TaskModule } from './task/task.module';
 import jwtConfigs from './config/jwtConfigs';
+import { JwtAuthGuard } from './common/guards/JwtAuthGuard';
+import { JwtStrategy } from './common/strategies/jwt.strategy';
+import { CustomerModule } from './customer/customer.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -23,10 +27,13 @@ import jwtConfigs from './config/jwtConfigs';
       }),
     }),
     AuthModule,
+    TaskModule,
+    CustomerModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
+    JwtStrategy,
     {
       provide: APP_INTERCEPTOR,
       useClass: ResponseInterceptor,
@@ -34,6 +41,10 @@ import jwtConfigs from './config/jwtConfigs';
     {
       provide: APP_FILTER,
       useClass: GlobalExceptionFilter,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
     },
   ],
 })

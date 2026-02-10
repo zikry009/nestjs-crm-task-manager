@@ -18,7 +18,7 @@ async function bootstrap() {
         name: 'Authorization',
         description: 'Bearer Token',
       },
-      'Authorization',
+      'access-token',
     )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
