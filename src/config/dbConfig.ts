@@ -1,4 +1,5 @@
 import { registerAs } from '@nestjs/config';
+import * as fs from 'node:fs';
 
 export default registerAs('db', () => ({
   type: process.env.DB_TYPE,
@@ -12,4 +13,10 @@ export default registerAs('db', () => ({
   logging: process.env.DB_LOGGING,
   poolSize: process.env.DB_POOL_SIZE,
   entities: [__dirname + '/../entities/*.entity{.ts,.js}'],
+  dbSSL: process.env.DB_SSL_CA
+    ? {
+        ca: fs.readFileSync(process.env.DB_SSL_CA),
+        rejectUnauthorized: true,
+      }
+    : false,
 }));
