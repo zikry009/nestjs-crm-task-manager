@@ -43,7 +43,6 @@ lerna-debug.log*
 .env.test.local
 .env.production
 .env.local
-ca.pem
 server-key.pem
 server-cert.pem
 
