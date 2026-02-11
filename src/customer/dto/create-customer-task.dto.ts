@@ -18,7 +18,7 @@ export class CreateCustomerTaskDto {
   @IsString({ message: 'Customer name must be a string' })
   customerName: string;
 
-  @ApiProperty({ description: 'Task status' })
+  @ApiProperty({ description: 'Task status', enum: TaskStatus })
   @IsNotEmpty({ message: 'Status is required' })
   @IsEnum(TaskStatus, { message: 'Invalid task status' })
   status: TaskStatus;

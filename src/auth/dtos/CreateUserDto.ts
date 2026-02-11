@@ -18,7 +18,7 @@ export class CreateUserDto {
   @IsString({ message: 'Password must be a string' })
   password: string;
 
-  @ApiProperty({ description: 'Role of the user' })
+  @ApiProperty({ description: 'Role of the user', enum: Role })
   @IsNotEmpty({ message: 'Role is required' })
   @IsEnum(Role, { message: 'Invalid role', each: true })
   role: Role;

@@ -18,7 +18,7 @@ export class CreateTaskDto {
   @IsEmail({}, { message: 'Invalid email' })
   assignedUserEmail: string;
 
-  @ApiProperty({ description: 'Task status' })
+  @ApiProperty({ description: 'Task status', enum: TaskStatus })
   @IsNotEmpty({ message: 'Task status is required' })
   @IsEnum(TaskStatus, { message: 'Invalid task status' })
   status: TaskStatus;
