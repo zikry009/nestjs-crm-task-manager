@@ -58,6 +58,19 @@ JWT_EXPIRATION_TIME='XXXX'
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+User Roles
+```bash
+ADMIN -> For Admin User
+USER -> For Normal User
+```
+
+Task Status
+```bash
+TODO -> Initail Status
+IN_PROGRESS -> For Task in progress
+DONE -> To Done the task
+```
+
 ## Project setup
 
 ```bash
