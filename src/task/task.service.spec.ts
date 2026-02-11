@@ -19,6 +19,7 @@ describe('TaskService', () => {
     save: jest.fn(),
     findOne: jest.fn(),
     update: jest.fn(),
+    delete: jest.fn(),
     createQueryBuilder: jest.fn(() => {
       return {
         leftJoin: jest.fn().mockReturnThis(),
@@ -378,6 +379,30 @@ describe('TaskService', () => {
       expect(result).toEqual({
         message: 'Task updated successfully',
         statusCode: 200,
+      });
+    });
+  });
+
+  describe('remove', () => {
+    it('should remove a task', async () => {
+      const mockTask = { id: 1, title: 'Task 1' } as Task;
+      mockTaskRepository.findOne.mockResolvedValue(mockTask);
+      mockTaskRepository.delete.mockResolvedValue(mockTask);
+      const result = await service.remove(1);
+      expect(mockTaskRepository.findOne).toHaveBeenCalledWith({
+        where: { id: 1 },
+      });
+      expect(mockTaskRepository.delete).toHaveBeenCalledWith(1);
+      expect(result).toEqual({
+        message: 'Task deleted successfully',
+        statusCode: 200,
+      });
+    });
+    it('should throw an error if task is not found', async () => {
+      mockTaskRepository.findOne.mockResolvedValue(null);
+      await expect(service.remove(1)).rejects.toThrow('Task not found');
+      expect(mockTaskRepository.findOne).toHaveBeenCalledWith({
+        where: { id: 1 },
       });
     });
   });
