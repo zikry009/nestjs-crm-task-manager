@@ -44,7 +44,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
     const request = context.switchToHttp().getRequest();
     const { authorization }: any = request.headers;
-    console.log('authorization - ', authorization);
     if (!authorization || authorization.trim() === '') {
       throw new UnauthorizedException('Unauthorized Access', {
         description: 'Please provide token',
