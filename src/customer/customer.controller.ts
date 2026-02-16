@@ -77,8 +77,8 @@ export class CustomerController {
   @ApiParam({ name: 'taskId', type: 'number', example: 1 })
   @ApiParam({ name: 'customerId', type: 'number', example: 1 })
   async assignTaskToCustomer(
-    @Param('taskId') taskId: string,
     @Param('customerId') customerId: string,
+    @Param('taskId') taskId: string,
   ) {
     return this.customerService.assignTaskToCustomer(customerId, taskId);
   }
