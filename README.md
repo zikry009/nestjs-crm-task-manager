@@ -49,6 +49,11 @@ DB_POOL_SIZE=5
 JWT_SECRET='XXXX'
 JWT_EXPIRATION_TIME='XXXX'
 ``` 
+## Test env variables
+test.env.ts contains the test env variables for e2e testing
+```bash 
+/test/helper/test.env.ts
+```
 
 ## Requirement to run
 
