@@ -26,11 +26,11 @@ import { CreateCustomerTaskDto } from 'src/customer/dto/create-customer-task.dto
  */
 describe('AppController (e2e)', () => {
   let app: INestApplication<App>;
+  process.env = { ...testEnv };
   const mysqlSource = new DataSource(mysqlDbOptions() as DataSourceOptions);
 
   beforeAll(async () => {
     await mysqlSource.initialize();
-    process.env = { ...testEnv };
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
         AppModule,

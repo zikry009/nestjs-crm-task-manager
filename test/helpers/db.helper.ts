@@ -13,12 +13,12 @@ import { DataSource } from 'typeorm';
  */
 export function mysqlDbOptions(): TypeOrmModuleOptions {
   return {
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: 'root',
-    database: 'task_crm_test',
+    type: process.env.DB_TYPE,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_TEST_NAME,
     entities: [__dirname + '/../../src/entities/*.entity{.ts,.js}'],
     synchronize: true, // builds schema from entity decorators — fine for tests
     dropSchema: true,
@@ -26,4 +26,3 @@ export function mysqlDbOptions(): TypeOrmModuleOptions {
     autoLoadEntities: true,
   };
 }
-
