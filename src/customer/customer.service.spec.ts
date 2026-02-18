@@ -248,7 +248,6 @@ describe('CustomerService', () => {
       ).toHaveBeenCalledWith('customer.name LIKE :name', {
         name: `%${customerName}%`,
       });
-      console.log(result);
       expect(result).toEqual({
         message: 'Customers fetched successfully',
         statusCode: 200,

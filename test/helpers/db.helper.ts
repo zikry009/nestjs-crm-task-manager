@@ -27,14 +27,3 @@ export function mysqlDbOptions(): TypeOrmModuleOptions {
   };
 }
 
-export const clearDatabase = async (dataSource: DataSource) => {
-    console.log('>>>entities', dataSource);
-  const entities = dataSource.entityMetadatas;
-  
-  for (const entity of entities) {
-    const repository = dataSource.getRepository(entity.name);
-    await repository.query(
-      `TRUNCATE TABLE "${entity.tableName}" RESTART IDENTITY CASCADE;`,
-    );
-  }
-};
