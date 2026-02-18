@@ -50,7 +50,7 @@ JWT_SECRET='XXXX'
 JWT_EXPIRATION_TIME='XXXX'
 ``` 
 ## Test env variables
-test.env.ts contains the test env variables for e2e testing
+test.env.ts contains the test env variables for e2e testing. You need to update the db variables according your system
 ```bash 
 /test/helper/test.env.ts
 ```
